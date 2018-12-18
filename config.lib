@@ -1511,6 +1511,10 @@ make_cflags_and_ldflags() {
 			LDFLAGS="$LDFLAGS -noixemul"
 		fi
 
+		if [ "$os" = "UNIX" ]; then
+			CXXFLAGS="$CFLAGS -DU_USING_ICU_NAMESPACE=1"
+		fi
+
 		if [ "$enable_profiling" = "0" ]; then
 			# -fomit-frame-pointer and -pg do not go well together (gcc errors they are incompatible)
 			CFLAGS="-fomit-frame-pointer $CFLAGS"
