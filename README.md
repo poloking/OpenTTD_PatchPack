@@ -1,3 +1,9 @@
+## Ralphie's Patchpack version 1.0
+
+This is a fork of Joker's patchpack to allow it to be easily compiled on Linux. The credit's go entirely to Joker since I only updated a few minor pieces to make it work ( in a hacky way). I will also produce a snap package to make it easier to use on linux.
+
+***
+
 ## Joker's Patchpack version v1.27.0
 
 This is a collection of patches applied to [OpenTTD](http://www.openttd.org/)
