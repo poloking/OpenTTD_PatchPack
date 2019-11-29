@@ -300,7 +300,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, int width, int 
 	/* check default names */
 	uint32 tmp = free_names & _gen_station_name_bits[name_class];
 	if (tmp != 0) return STR_SV_STNAME + FindFirstBit(tmp);
-	
+
 	/* check industry >>variable names<< */
 	for (int dx = -4; dx <= (width-1) + 4; dx++) {
 		for (int dy = -4; dy <= (height-1) + 4; dy++) {
@@ -465,7 +465,7 @@ void Station::UpdateCargoHistory()
 					std::begin(this->station_cargo_history) + cs->Index() * MAX_STATION_CARGO_HISTORY_DAYS + 1,
 					std::begin(this->station_cargo_history) + (cs->Index() + 1) * MAX_STATION_CARGO_HISTORY_DAYS);
 
-		this->station_cargo_history[(cs->Index() + 1) * MAX_STATION_CARGO_HISTORY_DAYS - 1] = std::clamp(amount / STATION_CARGO_HISTORY_FACTOR, (uint)0, (uint)UINT8_MAX);
+		this->station_cargo_history[(cs->Index() + 1) * MAX_STATION_CARGO_HISTORY_DAYS - 1] = Clamp(amount / STATION_CARGO_HISTORY_FACTOR, (uint)0, (uint)UINT8_MAX);
 	}
 }
 
@@ -860,7 +860,7 @@ CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags)
 
 	return cost;
 }
- 
+
  /**
  * Checks given water area for obstacles.
  * @param tile_area Area to check.
@@ -2604,7 +2604,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	return cost;
 }
- 
+
  /**
  * Place a Seaplane Airport.
  * @param tile tile where airport will be built
@@ -3395,7 +3395,7 @@ draw_default_foundation:
 					DrawGroundSprite(SPR_TRAMWAY_TRAM + sprite_offset, PAL_NONE);
 				}
 			}
-	
+
 			/* Draw road overlay */
 			if (road_rti != NULL) {
 				if (road_rti->UsesOverlay()) {
@@ -3403,7 +3403,7 @@ draw_default_foundation:
 					if (ground) DrawGroundSprite(ground + sprite_offset, PAL_NONE);
 				}
 			}
-	
+
 			/* Draw tram overlay */
 			if (tram_rti != NULL) {
 				if (tram_rti->UsesOverlay()) {
@@ -3960,7 +3960,7 @@ static void UpdateStationRating(Station *st)
 					 * next rating calculation. */
 					TruncateCargo(cs, ge, ge->cargo.AvailableCount() - waiting);
 				}
-				
+
 				if (ge->punishment_triggered) {
 					// We were punished by another station. Delay the update of waiting cargo until next rating.
 					ge->punishment_in_effect = true;
